@@ -2,14 +2,17 @@ package ru.vtb.java.pro.javaprohibernate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.vtb.java.pro.javaprohibernate.config.AppConfig;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import ru.vtb.java.pro.javaprohibernate.domain.User;
 import ru.vtb.java.pro.javaprohibernate.services.UserService;
 
+@Configuration
+@ComponentScan(basePackages = "ru.vtb.java.pro.javaprohibernate")
 public class JavaProHibernateApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(JavaProHibernateApplication.class);
 
         UserService userService = context.getBean(UserService.class);
 

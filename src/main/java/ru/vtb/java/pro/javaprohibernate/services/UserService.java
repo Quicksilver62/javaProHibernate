@@ -1,6 +1,5 @@
 package ru.vtb.java.pro.javaprohibernate.services;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.vtb.java.pro.javaprohibernate.dao.UserDao;
 import ru.vtb.java.pro.javaprohibernate.domain.User;
@@ -8,10 +7,13 @@ import ru.vtb.java.pro.javaprohibernate.domain.User;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
     private final UserDao userDao;
+
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public User createUser(String username) {
         if (username == null || username.trim().isEmpty()) {
